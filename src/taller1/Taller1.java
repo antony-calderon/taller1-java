@@ -20,8 +20,8 @@ public class Taller1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        promedio();
-        raiz();
+        //promedio();
+        //raiz();
         //residuo();
         //operacion();
         //pintura();
@@ -35,6 +35,9 @@ public class Taller1 {
         //fibonacci();
         //grados();
         //canciones();
+        //primos();
+        //tallerClase();
+        adivina();
     }
     
     /////////////////////SECUENCIALES EJERCICIO NUMERO 1//////////////////////////
@@ -414,5 +417,181 @@ public class Taller1 {
                                                     + "Año: 2013");
             }
         }
+    }
+    
+    ///////////////////////quiz//////////////////////////////////////////////////
+    public static void primos(){
+        double num=Integer.parseInt(JOptionPane.showInputDialog("ingresa un numero entre 1 y 100 por favor"));
+        
+        if (num>0 && num <=100){
+            if(num>=50){
+                for(int i=0;i>=num;i++){
+                    System.out.println(" "+num);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "error, por favor digite un numero entre 1 y 100");
+        }
+    }
+    
+    ////////////////TALLER REPASO EN CLASE//////////////////////////////////////
+    public static void tallerClase(){
+        int opc;
+        do{
+            opc=Integer.parseInt(JOptionPane.showInputDialog("escoje la opcion:\n"
+                                                            + "1. programa 1\n"
+                                                            + "2. programa 2\n"
+                                                            + "3. programa 3\n"
+                                                            + "4. programa 4\n"
+                                                            + "5. programa 5\n"
+                                                            + "0. salir"));
+            switch(opc){
+                case 1:
+                    //int opc2=0;
+                    int suma=0;
+                    int cont=0;
+                    int num=0;
+                    do{
+                        num=Integer.parseInt(JOptionPane.showInputDialog("digite un numero"));
+                        cont++;
+                        suma=suma+num;
+                        
+                        if(suma<=100){
+                            JOptionPane.showMessageDialog(null,"la promedio de los numeros es: "+ suma/cont+"\n si desea salir digite 1000");
+                            
+                        }else if(suma>100){
+                            JOptionPane.showMessageDialog(null, "La suma de los numeros es: "+suma+"\n si desea salir digite 1000");   
+                        }                   
+                    }while(num!=1000);
+                    break;
+                    
+                    
+                case 2:
+                    //do while contador y acumulador
+                    int capacidad=0;
+                    int monedas=0;
+                    int dias=0;
+                    do{
+                        monedas=Integer.parseInt(JOptionPane.showInputDialog("monedas a ingresar hoy"));
+                        capacidad+=monedas;
+                        dias++;                        
+                    }while(capacidad<50);
+                    JOptionPane.showMessageDialog(null, "llenaste la alcancia en: "+dias+" dias");
+                    break;
+                case 3:
+                    int menor=999999;
+                    int mayor=-999999;
+                    int n;
+                    for(int i=0;i<20;i++){
+                        n=Integer.parseInt(JOptionPane.showInputDialog("ingresa un numero"));
+                        if(n>mayor){
+                            mayor=n;
+                        }if(n<menor){
+                            menor=n;
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, "el numero mayor es: "+mayor);
+                    JOptionPane.showMessageDialog(null, "el numero menor es: "+menor);
+                    break;
+                case 4:
+                    //serie de if && 
+                    int a,b,c;
+                    a=Integer.parseInt(JOptionPane.showInputDialog("digite el valor de a"));
+                    b=Integer.parseInt(JOptionPane.showInputDialog("digite el valor de b"));
+                    c=Integer.parseInt(JOptionPane.showInputDialog("digite el valor de c"));
+                    
+                    if(a!=b && a!=c && b!=c){
+                    if(a>b && a>c && b>c){
+                        JOptionPane.showMessageDialog(null, "el numero mayore es: "+a+" \n el numero menor es: "+c);
+                    }else if(a>b && a>c && b<c){
+                        JOptionPane.showMessageDialog(null, "el numero mayore es: "+a+" \n el numero menor es: "+b);
+                        
+                    }else if(b>a && b>c && a>c){
+                        JOptionPane.showMessageDialog(null, "el numero mayor es "+b+" \n el numero menor es: "+c);
+                    }else if(b>a && b>c && a<c){
+                        JOptionPane.showMessageDialog(null, "el numero mayor es "+b+" \n el numero menor es: "+a);
+                    
+                    }else if(c>a && c>b && a>b){
+                        JOptionPane.showMessageDialog(null, "el numero mayor es "+c+" \n el numero menor es: "+b);
+                    }else if(c>a && c>b && a<b){
+                        JOptionPane.showMessageDialog(null, "el numero mayor es "+c+" \n el numero menor es: "+a);
+                    }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "introduce numeros diferentes");
+                    }
+                    break;
+                case 5:
+                    int numero=Integer.parseInt(JOptionPane.showInputDialog("ingrese un numero"));
+                    do{
+                        if(numero%2==0){
+                            JOptionPane.showMessageDialog(null, numero);
+                            numero=numero/2;
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, numero);
+                            numero=(numero*3)+1;
+                        }
+                        if(numero==1){
+                            JOptionPane.showMessageDialog(null, "1");
+                        }
+                    }while(numero!=1);
+                    break;
+            }
+        }while(opc!=0);
+        
+    }
+    
+    /////////////////////////////ADIVINA EL PRECIO///////////////////////////////
+    public static void adivina(){
+        Scanner entrada=new Scanner(System.in);
+        System.out.println("ingresa el objeto");
+        String objeto=entrada.nextLine();
+        System.out.println("ingresa el precio del objeto");
+        int precio=entrada.nextInt();
+        
+        JOptionPane.showMessageDialog(null, "JUGADOR 1");
+        int cont1=0;
+        for(int i=0;i<=4;i++){
+            int valor1=Integer.parseInt(JOptionPane.showInputDialog("adivina el precio"));
+            cont1++;
+            if(valor1<precio){
+                JOptionPane.showMessageDialog(null, "mas");
+            }else if(valor1>precio){
+                JOptionPane.showMessageDialog(null, "menos");
+            }else if(valor1==precio){
+                JOptionPane.showMessageDialog(null, "El precio es CORRECTO¡");
+                JOptionPane.showMessageDialog(null, "numero de intentos "+cont1);
+                break;
+            }
+            if(cont1>4){
+                JOptionPane.showMessageDialog(null, "PERDIO¡");
+                JOptionPane.showMessageDialog(null, "numero de intentos "+cont1);
+            }               
+        }
+        JOptionPane.showMessageDialog(null, "JUGADOR 2");
+        int cont2=0;
+        for(int i=0;i<=4;i++){
+            int valor2=Integer.parseInt(JOptionPane.showInputDialog("adivina el precio"));
+            cont2++;
+            if(valor2<precio){
+                JOptionPane.showMessageDialog(null, "mas");
+            }else if(valor2>precio){
+                JOptionPane.showMessageDialog(null, "menos");
+            }else if(valor2==precio){
+                JOptionPane.showMessageDialog(null, "El precio es CORRECTO¡");
+                JOptionPane.showMessageDialog(null, "numero de intentos "+cont2);
+                break;
+            }
+            if(cont2>4){
+                JOptionPane.showMessageDialog(null, "PERDIO¡");
+                JOptionPane.showMessageDialog(null, "numero de intentos "+cont2);
+            }
+        }
+        if(cont1>cont2){
+            JOptionPane.showMessageDialog(null, "EL GANADOR ES EL JUGADOR 2");
+        }else{
+            JOptionPane.showMessageDialog(null, "EL GANADOR ES EL JUGADOR 1");
+    }
+        
     }
 }
